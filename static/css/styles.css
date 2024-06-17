@@ -1,0 +1,107 @@
+/* static/css/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav {
+    margin: 0;
+    padding: 10px;
+    background-color: #444;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    margin: 20px 0;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+.company-info {
+    display: flex; /* Flexbox kullanarak içeriği hizalamak için */
+    justify-content: space-between; /* İçeriği boşluğa göre sağa ve sola hizalar */
+    align-items: center; /* Yatay hizada ortalamak için */
+}
+
+.logo {
+    width: 90px; /* Logo genişliği */
+    height: auto; /* Otomatik yükseklik ayarı */
+}
+
+.company-name {
+    font-size: 24px; /* Şirket adı yazı boyutu */
+    margin: 0; /* Yazı etrafındaki boşlukları sıfırla */
+    color: blue; /* Yazı rengi */
+}
+

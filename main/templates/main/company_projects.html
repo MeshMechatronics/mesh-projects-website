@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{ company.name }} - Projects{% endblock %}
+
+{% block content %}
+    <h1>Projects for {{ company.name }}</h1>
+    <ul>
+        {% for project in projects %}
+            <li><a href="{% url 'project_detail' project.id %}">{{ project.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Add a new project</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.name.label_tag }} {{ form.name }}
+        <button type="submit">Add Project</button>
+    </form>
+    <a href="{% url 'projects' %}">Back to Companies</a>
+{% endblock %}

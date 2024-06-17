@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Create Quote{% endblock %}
+
+{% block content %}
+    <h2>Create Quote</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Quote</button>
+    </form>
+    <a href="{% url 'index' %}">Back to Home</a>
+{% endblock %}

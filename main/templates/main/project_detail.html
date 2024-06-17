@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ project.name }}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/project_detail.css' %}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>{{ project.name }}</h2>
+        <p><strong>Description:</strong> {{ project.description }}</p>
+        <p><strong>Start Date:</strong> {{ project.start_date }}</p>
+        <p><strong>End Date:</strong> {{ project.end_date }}</p>
+        <p><strong>Budget:</strong> {{ project.budget }}</p>
+        <p><strong>Tasks:</strong> {{ project.tasks }}</p>
+        <button type="button" class="btn btn-primary" id="editProjectButton">Değişiklik Yap</button>
+        <a href="{% url 'projects' %}" class="btn btn-secondary">Back to Projects</a>
+    </div>
+
+    <!-- Edit Project Modal -->
+    <div class="modal fade" id="editProjectModal" tabindex="-1" aria-labelledby="editProjectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProjectModalLabel">Edit Project</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="{% url 'edit_project' project.id %}">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" class="form-control" id="name" name="name" value="{{ project.name }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description:</label>
+                                    <textarea class="form-control" id="description" name="description">{{ project.description }}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="start_date">Start Date:</label>
+                                    <input type="date" class="form-control" id="start_date" name="start_date" value="{{ project.start_date }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="end_date">End Date:</label>
+                                    <input type="date" class="form-control" id="end_date" name="end_date" value="{{ project.end_date }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="budget">Budget:</label>
+                                    <input type="number" class="form-control" id="budget" name="budget" value="{{ project.budget }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tasks">Tasks:</label>
+                                    <textarea class="form-control" id="tasks" name="tasks">{{ project.tasks }}</textarea>
+                                </div>
+                                <!-- Additional fields for project steps and responsible people -->
+                                <div class="form-group">
+                                    <label for="steps">Proje Adımları:</label>
+                                    <input type="text" class="form-control" id="steps" name="steps">
+                                </div>
+                                <div class="form-group">
+                                    <label for="responsible">Sorumlu:</label>
+                                    <input type="text" class="form-control" id="responsible" name="responsible">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Save Changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#editProjectButton").click(function(){
+                $("#editProjectModal").modal('show');
+            });
+        });
+    </script>
+</body>
+</html>

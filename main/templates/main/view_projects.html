@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+    <h2>Projects for {{ company.name }}</h2>
+    <ul>
+        {% for project in projects %}
+            <li><a href="{% url 'view_project_details' company.id project.id %}">{{ project.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'view_companies' %}">Back to Companies</a>
+    <a href="{% url 'index' %}">Back to Home</a>
+{% endblock %}
